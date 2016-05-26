@@ -1,0 +1,201 @@
+#Header
+{
+	height:25%;
+}
+
+#Content
+{
+	
+	background-repeat: no-repeat;
+	width:100%;
+	height:100%;
+}
+#Footer
+{
+	width:100%;
+	height:5%;
+	margin:0px;
+	padding:0px;
+	background: linear-gradient(to right, goldenrod, green, goldenrod);
+	border: 1px solid;
+}
+
+body
+{
+	margin:0;
+	padding:0;
+	background-image:url("luxuryHotel.jpg");
+}
+
+#HeaderUL
+{
+	list-style-type: none;
+    margin: 0;
+    padding: 0;
+    float:right;
+}
+
+.HeaderLI
+{
+	float:right;
+	text-align:center;
+	display:inline;
+	border-right:1px solid #bbb;
+}
+
+.HeaderLI a
+{
+	display: block;
+	padding: 14px 16px;
+	text-align:center;
+	text-decoration:none;
+	color:white;
+}
+
+.HeaderLI a:hover
+{
+	background-color: gray;
+}
+
+#Menu
+{
+	width:15%;
+	height:50%;
+	float:left;
+}
+
+#MenuUL
+{
+	margin:0px;
+	padding:0px;
+	width:200px;
+	list-style-type:none;
+	
+}
+
+.MenuLI a
+{
+	display:block;
+	padding: 8px 0 20px 8px;
+	color:#000;
+	text-align:center;
+	color:white;
+	font-size:large;
+}
+
+.MenuLI a:hover
+{
+	background-color: #555;
+    color: white;
+}
+
+#FooterContent
+{
+	text-align:center;
+	color:white;
+	float:right;
+	width:125px;
+	height:25px;
+	margin-top:5px;
+	
+}
+
+#GambarIcon
+{
+	width:40px;
+	height:30px;	
+}
+
+#TempGambar
+{
+	margin-top: 3px;
+	float:right;
+}
+
+#IsiHome
+{
+	width:65%;
+	height:90%;
+	background-color:honeydew;
+	float:left;
+}
+
+#PemesananEvent
+{
+	
+	width:200px;
+	height:125px;
+	margin-left:75%;
+	
+}
+#Address
+{
+	margin-top:5px;
+	margin-left:10px;
+}
+#ButtonPE
+{
+	margin-left:40;
+}
+
+#DropDownJeniEvent
+{
+	margin-top:50px;
+	margin-left:40px;
+	float:left;
+}
+
+#TableData
+{
+	margin-top:10px;
+	width:100%;
+	height:74%;
+	
+}
+
+#TableData tr:nth-child(even) {
+    background-color: #eee;
+}
+#TableData tr:nth-child(odd) {
+    background-color: #fff;
+}
+#TableData th {
+    color: white;
+    background-color: black;
+}
+
+table, th, td {
+  
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+
+#tableActive
+{
+	background-color:#555;
+	color:green;
+}
+ .textbox 
+ { 
+    background: white; 
+    border: 1px double #DDD; 
+    border-radius: 5px; 
+    box-shadow: 0 0 5px #333; 
+    color: #666; 
+    outline: none; 
+    height:17px; 
+    width: 175px; 
+ } 
+ 
+#InputTextStyle {
+	padding: 5px 0px 0px 10px;
+	font-size: 13pt;
+	border: none;
+	border-bottom: 1px solid black;
+	background-color: honeydew;
+	text-decoration: underline;
+}
+
