@@ -14,7 +14,7 @@ class Model_basic extends CI_Model
 		}
 		return $this->db->get($tablename)->result();
 	}
-	function insertDataUser($tablename,$data)
+	function insertData($tablename,$data)
 	{
 		$this->db->insert($tablename,$data);
 	}
