@@ -28,7 +28,9 @@
 		} );
 		$("#button_delete").click(function()
 		{
-			$.ajax({
+			if(confirm("Mau delete ?"))
+			{
+				$.ajax({
 					url:"<?php echo site_url("vendor/deleteData")?>",
 					type:"post",
 					data:{id:selectedData},
@@ -39,6 +41,8 @@
 						table.row('.selected').remove().draw( false );
 					}
 				})
+			}
+			
 		});
 		$("#updateBTN").click(function(){
 			$.ajax({

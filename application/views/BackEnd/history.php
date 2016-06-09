@@ -7,7 +7,7 @@
 	<script src="<?php echo base_url("Asset/jquery/jquery.dataTables.min.js")?>"></script>
 	<script>
 		$(document).ready(function(){
-			var data1 = [["Tonton","A","MC","9-5-2016","10-5-2016","On Progress"],
+			var data1 = [["Tonton","A","MC<br>asdf","9-5-2016","10-5-2016","On Progress"],
 			["Lom","A","MC, Entertainer","13-3-2016","15-3-2016","Finished"],
 			["Tokato","C","Entertainer","10-4-2016","13-4-2016","Finished"],
 			["Yuru","Custom","-","1-5-2016","2-5-2016","Finished"]];

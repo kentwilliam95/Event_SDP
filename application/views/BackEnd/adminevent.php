@@ -7,12 +7,32 @@
 	<script src="<?php echo base_url("Asset/jquery/jquery.dataTables.min.js")?>"></script>
 	<script>
 		$(document).ready(function(){
-			var data1 = [["Yolo","A","MC","10-5-2016","15-5-2016","<input type='button' value='OK'>","<input type='button' value='Cancel'>"],
-			["Rum","A","MC, Entertainer","13-5-2016","15-5-2016","<input type='button' value='OK'>","<input type='button' value='Cancel'>"],
-			["Tokato","C","Entertainer","10-5-2016","13-5-2016","<input type='button' value='OK'>","<input type='button' value='Cancel'>"],
-			["Rum","Custom","-","19-5-2016","20-5-2016","<input type='button' value='OK'>","<input type='button' value='Cancel'>"]];
-			$('#table').DataTable({
-				data:data1,
+			createTable(<?php echo $DataAcara?>);
+			
+			$("#table ").on("click","#okCancel",function()
+			{
+				if(confirm("Yakin Data "+ $(this).attr("nomor")+" Tersebut Mau di Cancel ?"))
+				{
+					$.ajax({
+					url:"<?php echo site_url("adminevent/deleteData")?>",
+					type:"post",
+					data:{id:$(this).attr("nomor")},
+					success:function(res)
+					{
+						createTable(JSON.parse(res));
+					}
+				})
+				}
+				
+			})
+			
+			function ganti() {
+				alert("tergantikan");
+			}
+			function createTable(duata)
+			{
+				$('#table').DataTable({
+				data:duata,
 				columns:[
 				{title : "Nama"},
 				{title : "Paket Event"},
@@ -21,12 +41,9 @@
 				{title : "Tanggal Akhir"},
 				{title : " "},
 				{title : " "},
-				]
+				],
+				destroy:true
 			});
-			//
-			
-			function ganti() {
-				alert("tergantikan");
 			}
 		});
 	</script>
