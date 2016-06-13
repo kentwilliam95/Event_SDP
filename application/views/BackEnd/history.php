@@ -7,22 +7,22 @@
 	<script src="<?php echo base_url("Asset/jquery/jquery.dataTables.min.js")?>"></script>
 	<script>
 		$(document).ready(function(){
-			var data1 = [["Tonton","A","MC<br>asdf","9-5-2016","10-5-2016","On Progress"],
-			["Lom","A","MC, Entertainer","13-3-2016","15-3-2016","Finished"],
-			["Tokato","C","Entertainer","10-4-2016","13-4-2016","Finished"],
-			["Yuru","Custom","-","1-5-2016","2-5-2016","Finished"]];
-			$('#table').DataTable({
-				data:data1,
-				columns:[
-				{title : "Nama"},
-				{title : "Paket Event"},
-				{title : "Vendor Event"},
-				{title : "Tanggal Mulai"},
-				{title : "Tanggal Akhir"},
-				{title : "Status"}
-				]
-			});
-			//
+			createTable(<?php echo $hasilhistory?>);
+			function createTable(duata)
+			{
+				$('#table').DataTable({
+					data:duata,
+					columns:[
+					{title : "Nama Event"},
+					{title : "Paket Event"},
+					{title : "Vendor Event"},
+					{title : "Tanggal Mulai"},
+					{title : "Tanggal Akhir"},
+					{title : "Status"}
+					],
+					destroy:true
+				});
+			}
 			
 			function ganti() {
 				alert("tergantikan");
@@ -36,7 +36,7 @@
 <div id="iContainer">
 	<br>
 	&nbsp
-	<a href="<?php echo site_url("vendor/index")?>">
+	<a href="<?php echo site_url("vendor/index/index")?>">
 		<input type="submit" value="Vendor" class="button blue">
 	</a>
 	&nbsp
