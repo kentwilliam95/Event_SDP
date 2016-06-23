@@ -17,16 +17,30 @@
 					url:"<?php echo site_url("adminevent/deleteData")?>",
 					type:"post",
 					data:{id:$(this).attr("nomor")},
-					success:function(res)
-					{
-						createTable(JSON.parse(res));
-						
-					}
-				})
+						success:function(res)
+						{
+							createTable(JSON.parse(res));
+							
+						}
+					})
 				}
 				
 			})
-			
+			$("#table").on("click","#okKlik",function()
+			{
+				if(confirm("Apakah Data Ke "+$(this).attr("nomor")+" ingin disetujui?"))
+				{
+					$.ajax({
+						url:"<?php echo site_url("adminevent/okeh")?>",
+						type:"post",
+						data:{id:$(this).attr("nomor")},
+						success:function(res)
+						{
+							createTable(JSON.parse(res));
+						}
+					})
+				}
+			})
 			function ganti() {
 				alert("tergantikan");
 			}
