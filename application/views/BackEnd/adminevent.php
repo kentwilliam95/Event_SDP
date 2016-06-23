@@ -1,5 +1,5 @@
 <html>
-<head>082245244025
+<head>
 	<title></title>
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url("Asset/css/style.css")?>" />
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url("Asset/css/jquery.dataTables.min.css")?>" />

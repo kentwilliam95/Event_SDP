@@ -6,6 +6,7 @@ class adminevent extends CI_Controller
 		parent::__construct();
 		$this->load->model("Model_basic");
 		$this->load->helper(Array("url","form"));
+		header('Access-Control-Allow-Origin: *');
 	}
 	function index()
 	{
