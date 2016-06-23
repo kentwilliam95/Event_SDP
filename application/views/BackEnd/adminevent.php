@@ -20,6 +20,7 @@
 					success:function(res)
 					{
 						createTable(JSON.parse(res));
+						
 					}
 				})
 				}
