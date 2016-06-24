@@ -12,5 +12,10 @@ class pemesananEvent extends CI_Controller
 	{
 		$this->load->view("Pemesanan_Event");
 	}
+	
+	function popCustom()
+	{
+		
+	}
 }
 ?>

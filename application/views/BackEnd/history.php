@@ -14,7 +14,7 @@
 					data:duata,
 					columns:[
 					{title : "Nama Event"},
-					{title : "Paket Event"},
+					{title : "ID Paket"},
 					{title : "Vendor Event"},
 					{title : "Tanggal Mulai"},
 					{title : "Tanggal Akhir"},

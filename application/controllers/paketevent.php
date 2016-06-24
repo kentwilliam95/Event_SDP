@@ -10,10 +10,38 @@ class paketevent extends CI_Controller
 	}
 	function index()
 	{
-		$this->load->view("Paket_Event");
+		$temp = $this->Model_basic->getData("paketstandard",Array("NAMAPAKETSTANDAR"=>"paket1"));
+		$hasil = array();
+		foreach($temp as $row)
+		{
+			$pieces = explode(",", $row->IDMENUSTANDAR);
+			foreach($pieces as $piece)
+			{
+				Array_push($hasil,Array($piece,"10000"));
+			}	
+		}
+		$hasil = json_encode($hasil);
+		$data["hasil"] = $hasil;
+		$this->load->view("Paket_Event",$data);
+	}
+	
+	function showpaket()
+	{
+		$asd = $this->input->post("id");
+		
+		$hasil = array();
+		$temp = $this->Model_basic->getData("paketstandard",Array("NAMAPAKETSTANDAR"=>$asd));
+		foreach($temp as $row)
+		{
+			$pieces = explode(",", $row->IDMENUSTANDAR);
+			foreach($pieces as $piece)
+			{
+				Array_push($hasil,Array($piece,"10000"));
+			}	
+		}
+		$hasil = json_encode($hasil);
+		
+		echo $hasil;
 	}
 }
-
-
-
 ?>

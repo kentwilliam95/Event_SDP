@@ -158,7 +158,7 @@
 									<option value="Entertainment">Entertainment</option>
 									<option value="Decoration">Decoration</option>
 									<option value="Food&B">Food and Beverage</option>
-									<option value="Mc">Mc</option>
+									<option value="MC">Mc</option>
 									<option value="EventOrganizer">Event Organizer</option>
 								</select>
 							</div>
@@ -170,57 +170,11 @@
 								<button type="button" class="btn btn-info btn-lg pull-right">Pemesanan Event</button>
 							</div>
 							<div class="panel-body table-responsive">
-								<table class="table table-hover">
-									<thead>
-										<tr>
-											<th>No </th>
-											<th>Nama</th>
-											<th>Alamat </th>
-											<th>Jenis </th>
-											<th>Contact </th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>1</td>
-											<td>Hans Kristian</td>
-											<td>Ngagel</td>
-											<td>Entertainment</td>
-											<td>+62345678900</td>
-											<td><span class="label label-danger">in progress</span></td>
-											<td><span class="badge badge-info">50%</span></td>
-										</tr>
+								<table class="table table-hover" id="tabel1">
 										
-										<tr>
-											<td>2</td>
-											<td>Kent</td>
-											<td>Satelit</td>
-											<td>Food and Baverages</td>
-											<td>+6234343434343</td>
-											<td><span class="label label-success">completed</span></td>
-											<td><span class="badge badge-success">100%</span></td>
-										</tr>
-										
-										<tr>
-											<td>3</td>
-											<td>Widiarta</td>
-											<td>Ngagel</td>
-											<td>MC</td>
-											<td>+25467319827</td>
-											<td><span class="label label-warning">in progress</span></td>
-											<td><span class="badge badge-warning">75%</span></td>
-										</tr>
-										<tr>
-										</tr>
-										<tr>
-											<td colspan="3">Subtotal<td>
-											<td>Rp.2000000</td>
-										</tr>
-										
-									</tbody>
 								</table>								
-								<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Costum Vendor Event</button>
-							</div>
+								<!--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Costum Vendor Event</button>
+							--></div>
 						</section>
 					</div><!--end col-6 -->
 			</section><!-- /.content -->
@@ -347,6 +301,36 @@
 				radioClass: 'iradio_flat-grey'
 			});
 		</script>
-		
+		<script>
+		$("document").ready(function()
+		{
+			createTabel(null);
+			$("#sel1").change(function()
+			{
+				$.ajax({
+					url:"<?php echo site_url("vendorevent/showpaket")?>",
+					type:"post",
+					data:{id:$(this).val()},
+					success:function(res)
+					{
+						createTabel(JSON.parse(res));
+					}
+				})
+			})
+			function createTabel(duata)
+			{
+				$("#tabel1").DataTable({
+				data:duata,
+				columns:[
+				{title:"Nama Vendor"},
+				{title:"Alamat Vendor"},
+				{title:"No Telp"},
+				{title:"Email Vendor"},
+				],
+				destroy:true
+				})
+			}
+		})
+		</script>
 	</body>
 </html>

@@ -49,7 +49,7 @@ class adminevent extends CI_Controller
 			$idStandard = $paketStandard[0]->IDPAKETSTANDAR;
 			$idAcara = $this->Model_basic->query("select max(substr(IDACARA,3)) as maks from acara");
 			$idAcara = $idAcara[0]->maks + 1;
-			$hasil = "AD".sprintf("%'.03d\n", $idAcara);
+			$hasil = "AC".sprintf("%'.03d\n", $idAcara);
 			$this->Model_basic->insertData("acara",Array("IDACARA"=>$hasil,"IDPAKETSTANDAR"=>$idStandard,"IDCUSTOMPAKET"=>null,"NAMAACARA"=>$temp[0]->nama_acara,"JENISACARA"=>null,"KETACARA"=>null,"start_date"=>$temp[0]->start_date,"end_date"=>$temp[0]->end_date));
 			$this->Model_basic->deleteData("requestAcara",Array("ID_requestAcara"=>$id));
 		}

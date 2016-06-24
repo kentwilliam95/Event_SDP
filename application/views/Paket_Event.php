@@ -41,9 +41,7 @@
           <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
           <![endif]-->
 
-	<style type="text/css">
-
-	</style>
+	
 </head>
 	<body class="skin-black">
         <!-- header logo: style can be found in header.less -->
@@ -154,12 +152,13 @@
 							</header>
 							<div class="form-group col-sm-3">
 								<label for="sel1">Jenis Paket</label>
+								
 								<select class="form-control" name="jenisVendor" id="sel1">
 									<option value="Paket1">Paket 1</option>
 									<option value="Paket2">Paket 2</option>
 									<option value="Paket3">Paket 3</option>
-									<option value="Paket4">Paket 4</option>
-									<option value="Paket5">Paket 5</option>
+									<!--<option value="Paket4">Paket 4</option>
+									<option value="Paket5">Paket 5</option>-->
 								</select>
 							</div>
 							<div class="form-group col-sm-9">				
@@ -170,56 +169,16 @@
 								<button type="button" class="btn btn-info btn-lg pull-right">Pemesanan Event</button>
 							</div>
 							<div class="panel-body table-responsive">
-								<table class="table table-hover">
-									<thead>
-										<tr>
-											<th>No </th>
-											<th>Nama Paket </th>
-											<th>Nama Vendor </th>
-											<th>Jenis Vendor </th>
-											<th>Harga </th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>1</td>
-											<td>Hans Kristian</td>
-											<td>Ngagel</td>
-											<td>Entertainment</td>
-											<td>Rp.500000</td>
-											<td><span class="label label-danger">in progress</span></td>
-											<td><span class="badge badge-info">50%</span></td>
-										</tr>
-										
-										<tr>
-											<td>2</td>
-											<td>Kent</td>
-											<td>Satelit</td>
-											<td>Food and Baverages</td>
-											<td>Rp.500000</td>
-											<td><span class="label label-success">completed</span></td>
-											<td><span class="badge badge-success">100%</span></td>
-										</tr>
-										
-										<tr>
-											<td>3</td>
-											<td>Widiarta</td>
-											<td>Ngagel</td>
-											<td>MC</td>
-											<td>Rp.1000000</td>
-											<td><span class="label label-warning">in progress</span></td>
-											<td><span class="badge badge-warning">75%</span></td>
-										</tr>
-										<tr>
-										</tr>
-										<tr>
-											<td colspan="3">Subtotal<td>
-											<td>Rp.2000000</td>
-										</tr>
-										
-									</tbody>
-								</table>								
-								<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Costum Paket Event</button>
+								<table class="table table-hover" id="tabel1">
+									
+								</table>	
+								<br>
+								<div class="col-sm-9"></div>								
+								<div style="font-size:20pt" id="subtotal">Subtotal: </div>
+								<!--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Costum Paket Event</button>
+							--></div>
+							<div class="form-group col-sm-9">
+							
 							</div>
 						</section>
 					</div><!--end col-6 -->
@@ -347,39 +306,43 @@
 				radioClass: 'iradio_flat-grey'
 			});
 		</script>
-		<script type="text/javascript">
-			$(function() {
-						"use strict";
-						//BAR CHART
-						var data = {
-							labels: ["January", "February", "March", "April", "May", "June", "July"],
-							datasets: [
-								{
-									label: "My First dataset",
-									fillColor: "rgba(220,220,220,0.2)",
-									strokeColor: "rgba(220,220,220,1)",
-									pointColor: "rgba(220,220,220,1)",
-									pointStrokeColor: "#fff",
-									pointHighlightFill: "#fff",
-									pointHighlightStroke: "rgba(220,220,220,1)",
-									data: [65, 59, 80, 81, 56, 55, 40]
-								},
-								{
-									label: "My Second dataset",
-									fillColor: "rgba(151,187,205,0.2)",
-									strokeColor: "rgba(151,187,205,1)",
-									pointColor: "rgba(151,187,205,1)",
-									pointStrokeColor: "#fff",
-									pointHighlightFill: "#fff",
-									pointHighlightStroke: "rgba(151,187,205,1)",
-									data: [28, 48, 40, 19, 86, 27, 90]
-								}
-							]
-						};
-					
-
-					});
-					// Chart.defaults.global.responsive = true;
-		</script>
+		<script>
+	$("document").ready(function()
+	{
+		createTabel(<?php echo $hasil?>);
+		$("#sel1").change(function()
+		{
+			$.ajax({
+				url:"<?php echo site_url("paketevent/showpaket")?>",
+				type:"post",
+				data:{id:$(this).val()},
+				success:function(res)
+				{
+					//alert(res);
+					createTabel(JSON.parse(res));
+				}
+			})
+		})
+		function createTabel(duata)
+		{
+			$("#tabel1").DataTable({
+			data:duata,
+			columns:[
+			{title:"Menu"},
+			{title:"Harga"},
+			],
+			destroy:true
+			})
+			
+			var table = $('#tabel1').DataTable();
+			var potong=0;
+			for($i=0; $i < table.rows().data().length; $i++)
+			{
+				potong = potong + parseInt(table.rows().column(1).data()[$i]);
+			}		
+			$("#subtotal").html("Subtotal: "+potong+"");
+		}
+	})
+	</script>
 	</body>
 </html>

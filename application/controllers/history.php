@@ -9,7 +9,7 @@ class history extends CI_Controller
 	}
 	function index()
 	{
-		$HasilHistory=$this->Model_basic->getData("requestacara",null);
+		$HasilHistory=$this->Model_basic->getData("acara",null);
 		$data["hasilhistory"] = Array();
 		$hasil=array();
 		$temp = array();
@@ -25,7 +25,7 @@ class history extends CI_Controller
 				$progress = "On Progress";
 			}
 			
-			$temp = Array($row->nama_acara,$row->namapaket,$row->namavendor,$row->start_date,$row->end_date,$progress);
+			$temp = Array($row->NAMAACARA,$row->namapaket,$row->namavendor,$row->start_date,$row->end_date,$progress);
 			Array_push($hasil,$temp);
 			$temp = Array();
 		}
