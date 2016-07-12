@@ -167,7 +167,7 @@
 								
 								<p style="text-align:right;text-justify:inter-word;">Lakukanlah Pemesanan Event Sekarang Juga</p>
 								
-								<button type="button" class="btn btn-info btn-lg pull-right">Pemesanan Event</button>
+								<button type="button" class="btn btn-info btn-lg pull-right"><a href="<?php echo site_url("pemesananEvent/index")?>" style="color:white">Pemesanan Event</a></button>
 							</div>
 							<div class="panel-body table-responsive">
 								<table class="table table-hover" id="tabel1">
