@@ -233,6 +233,12 @@
 										</select>
 									</div>
 								</div>
+								<div class="form-group">
+									<label class="control-label col-sm-2">Paket Vendor:</label>
+									<div class="col-xs-2"> 
+										<button type="submit" id="openvendor" class="btn btn-default">Get Now</button>
+									</div>
+								</div>
 								<div class="form-group">        
 									<div class="col-sm-offset-5 col-sm-3">
 									<button type="submit" class="btn btn-default">Submit</button>
@@ -340,14 +346,22 @@
 			})
 		})
 		</script>
+		<script>
+		$("document").ready(function()
+		{
+			$("#openvendor").click(function(){
+				$("#myVendor").modal("show");
+			})
+		})
+		</script>
 	</body>
-	<div id="myModal" class="modal fade" role="dialog" title="Custom Event">
+	<div id="myModal" class="modal fade" role="dialog" title="Custom Paket">
 			<div class="modal-dialog">
 				<!-- Modal content-->
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Custom Event</h4>
+						<h4 class="modal-title">Custom Paket</h4>
 					</div>
 					<div class="modal-body">
 						<form class="form-horizontal" role="form">
@@ -356,7 +370,10 @@
 								<div class="col-sm-5">          
 								<input type="checkbox" name="makan1" value="roti"> Roti<br>
 								<input type="checkbox" name="makan2" value="kue"> Kue<br>
-								<input type="checkbox" name="makan3" value="es"> Es<br>
+								<input type="checkbox" name="makan3" value="es"> Es<br> 
+								<input type="checkbox" name="makan4" value="fuyung"> Fuyunghai<br>
+								<input type="checkbox" name="makan5" value="nasigoreng"> Nasi Goreng<br>
+								<input type="checkbox" name="makan6" value="puding"> Puding<br>
 								</div>
 							</div>
 							<div class="form-group">
@@ -377,5 +394,69 @@
 				  </div>
 				</div>
 			</div>
-		</div>
+	</div>
+	<div id="myVendor" class="modal fade" role="dialog" title="Custom Vendor">
+			<div class="modal-dialog">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Custom Vendor</h4>
+					</div>
+					<div class="modal-body">
+						<form class="form-horizontal" role="form">
+							<div class="form-group">
+								<label class="control-label col-sm-3" for="entertainment">Entertainment:</label>
+								<div class="col-sm-5">          
+								<input type="checkbox" name="entera" value="entera"> EnterA<br>
+								<input type="checkbox" name="enterb" value="enterb"> EnterB<br>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-3" for="decoration">Decoration:</label>
+								<div class="col-sm-5">          
+								<input type="checkbox" name="decora" value="decora"> DecorA<br>
+								<input type="checkbox" name="decorb" value="decorb"> DecorB<br>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-3" for="fandb">Food And Beverage:</label>
+								<div class="col-sm-5">          
+								<input type="checkbox" name="restoa" value="restoa"> RestoA<br>
+								<input type="checkbox" name="restob" value="restob"> RestoB<br>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-3" for="mc">MC:</label>
+								<div class="col-sm-5">          
+								<input type="checkbox" name="mca" value="mca"> MCA<br>
+								<input type="checkbox" name="mcb" value="mcb"> MCB<br>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-3" for="eo">Event Organizer:</label>
+								<div class="col-sm-5">          
+								<input type="checkbox" name="eoa" value="eoa"> Event OrganizerA<br>
+								<input type="checkbox" name="eob" value="eob"> Event OrganizerB<br>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-3" for="total">Total:</label>
+								<div class="col-sm-5">          
+								<input type="text" class="form-control" id="total" placeholder="Total">
+								</div>
+							</div>
+							<div class="form-group">        
+								<div class="col-sm-offset-3 col-sm-5">
+								<button type="submit" class="btn btn-default">Submit</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				  <div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				  </div>
+				</div>
+			</div>
+	</div>
 </html>
