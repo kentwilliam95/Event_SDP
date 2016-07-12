@@ -354,31 +354,9 @@
 							<div class="form-group">
 								<label class="control-label col-sm-3" for="paket1">Menu:</label>
 								<div class="col-sm-5">          
-								<input type="text" class="form-control" id="paket1" placeholder="Nama Paket">
-								</div>
-							</div>
-							<div class="form-group">	
-								<label class="control-label col-sm-3" for="paket2">Menu:</label>
-								<div class="col-sm-5">          
-								<input type="text" class="form-control" id="paket2" placeholder="Nama Paket">
-								</div>
-							</div>
-							<div class="form-group">	
-								<label class="control-label col-sm-3" for="paket3">Menu:</label>
-								<div class="col-sm-5">          
-								<input type="text" class="form-control" id="paket3" placeholder="Nama Paket">
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="control-label col-sm-3" for="vendor1">Nama Vendor:</label>
-								<div class="col-sm-5">          
-								<input type="text" class="form-control" id="vendor1" placeholder="Nama Vendor">
-								</div>
-							</div>
-							<div class="form-group">						
-								<label class="control-label col-sm-3" for="vendor2">Nama Vendor:</label>
-								<div class="col-sm-5">          
-								<input type="text" class="form-control" id="vendor2" placeholder="Nama Vendor">
+								<input type="checkbox" name="makan1" value="roti"> Roti<br>
+								<input type="checkbox" name="makan2" value="kue"> Kue<br>
+								<input type="checkbox" name="makan3" value="es"> Es<br>
 								</div>
 							</div>
 							<div class="form-group">
