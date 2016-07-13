@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 23, 2016 at 04:48 PM
+-- Generation Time: Jul 13, 2016 at 07:31 AM
 -- Server version: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -44,7 +44,9 @@ CREATE TABLE IF NOT EXISTS `acara` (
 INSERT INTO `acara` (`IDACARA`, `IDPAKETSTANDAR`, `IDCUSTOMPAKET`, `NAMAACARA`, `JENISACARA`, `KETACARA`, `start_date`, `end_date`) VALUES
 ('AC001', 'S001', NULL, 'meeting humu', 'meeting', NULL, '2016-06-14', '2016-06-15'),
 ('AC002', 'S003', NULL, 'pernikahan u and me', 'weeding', NULL, '2016-06-18', '2016-06-19'),
-('AC003', 'S001', NULL, 'mari pesta', 'ballroom', NULL, '2016-06-22', '2016-06-23');
+('AC003', 'S001', NULL, 'mari pesta', 'ballroom', NULL, '2016-06-22', '2016-06-23'),
+('AC005\n', 'S001', NULL, 'wedding widi', NULL, NULL, '2016-06-19', '2016-06-19'),
+('AD004\n', 'S001', NULL, 'pernikahan', NULL, NULL, '2016-06-16', '2016-06-18');
 
 -- --------------------------------------------------------
 
@@ -641,8 +643,8 @@ CREATE TABLE IF NOT EXISTS `paketstandard` (
 --
 
 INSERT INTO `paketstandard` (`IDPAKETSTANDAR`, `NAMAPAKETSTANDAR`, `IDMENUSTANDAR`, `HARGAPAKETSTANDAR`) VALUES
-('S001', 'paket1', 'kepiting bakar, tequila', '5000'),
-('S002', 'paket2', 'nasi goreng, teh manis', '9000'),
+('S001', 'paket1', 'kepiting bakar,tequila', '5000'),
+('S002', 'paket2', 'nasi goreng,teh manis', '9000'),
 ('S003', 'paket3', 'puding', '2000');
 
 -- --------------------------------------------------------
@@ -801,19 +803,16 @@ CREATE TABLE IF NOT EXISTS `requestacara` (
   `namavendor` varchar(100) NOT NULL,
   `start_date` date NOT NULL,
   `end_date` date NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `requestacara`
 --
 
 INSERT INTO `requestacara` (`ID_requestAcara`, `nama_acara`, `namapaket`, `namavendor`, `start_date`, `end_date`) VALUES
-(1, 'pernikahan', 'paket1', 'widi,kenneth,kent, hans, kelvin', '2016-06-16', '2016-06-18'),
-(2, 'meeting', 'paket 2', 'hans,kent, william, wilson', '2016-06-08', '2016-06-15'),
-(3, 'meeting', 'paket 3 ', 'asd,weq,zzz,aaa,qqq', '2016-06-17', '2016-06-17'),
-(5, 'wedding', 'paket spesial warga', 'kkk,iii,wiquwe,kjvcxmnasd,asjdk', '2016-06-18', '2016-06-18'),
-(6, 'wedding widi', 'paket spesial 1', 'kent, michael, adrian, kevin', '2016-06-19', '2016-06-19'),
-(7, 'meeting humu', 'paket3', 'cendrawasih, kent', '2016-06-01', '2016-06-03');
+(2, 'meeting', 'paket2', 'hans,kent, william, wilson', '2016-06-08', '2016-06-15'),
+(3, 'meeting', 'paket3', 'asd,weq,zzz,aaa,qqq', '2016-06-17', '2016-06-17'),
+(5, 'wedding', 'paket1', 'kkk,iii,wiquwe,kjvcxmnasd,asjdk', '2016-06-18', '2016-06-18');
 
 -- --------------------------------------------------------
 
@@ -921,6 +920,17 @@ CREATE TABLE IF NOT EXISTS `terimapembelian` (
   `TGLTERIMAPO` datetime DEFAULT NULL,
   `TOTALQTYPO` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `testest`
+--
+
+CREATE TABLE IF NOT EXISTS `testest` (
+`id` int(5) NOT NULL,
+  `nama` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -1397,6 +1407,12 @@ ALTER TABLE `terimapembelian`
  ADD PRIMARY KEY (`KDPENERIMAAN`), ADD KEY `FK_ADA` (`KDBELIINVENT`);
 
 --
+-- Indexes for table `testest`
+--
+ALTER TABLE `testest`
+ ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tipekamar_reservasi`
 --
 ALTER TABLE `tipekamar_reservasi`
@@ -1434,7 +1450,12 @@ ALTER TABLE `vendor_dacara`
 -- AUTO_INCREMENT for table `requestacara`
 --
 ALTER TABLE `requestacara`
-MODIFY `ID_requestAcara` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+MODIFY `ID_requestAcara` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `testest`
+--
+ALTER TABLE `testest`
+MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
 --
 -- Constraints for dumped tables
 --

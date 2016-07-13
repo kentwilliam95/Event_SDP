@@ -236,7 +236,7 @@
 								<div class="form-group">
 									<label class="control-label col-sm-2">Paket Vendor:</label>
 									<div class="col-xs-2"> 
-										<button type="submit" id="openvendor" class="btn btn-default">Get Now</button>
+										<button type="submit" id="openvendor" class="btn btn-default" value="getnow">Get Now</button>
 									</div>
 								</div>
 								<div class="form-group">        
