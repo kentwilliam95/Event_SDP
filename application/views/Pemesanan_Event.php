@@ -154,11 +154,11 @@
 								Form Pemesanan Event
 							</header>
 						
-							<form class="form-horizontal" role="form">
+							<form class="form-horizontal" role="form" method="post" action="<?php echo site_url('pemesananEvent/InsertRequestAcara')?>">
 								<div class="form-group">
 									<label class="control-label col-sm-2" for="paket">Nama :</label>
 									<div class="col-sm-5">          
-									<input type="text" class="form-control" id="nama" placeholder="Nama">
+									<input type="text" class="form-control" id="nama" placeholder="Nama" required=true>
 									</div>
 								</div>
 								<div class="form-group">
@@ -174,16 +174,16 @@
 									</div>
 								</div>
 								<div class="form-group">	
-									<label class="control-label col-sm-2" for="Mulai">Tanggal Mulai:</label>
+									<label class="control-label col-sm-2" for="Mulai" >Tanggal Mulai:</label>
 									<div class="col-xs-3">          
-										<input id="tglMulai" type="text" class="form-control">
+										<input id="tglMulai" type="text" class="form-control" required=true>
 									</div>
 									
 								</div>
 								<div class="form-group">
 									<label class="control-label col-sm-2" for="Berakhir">Tanggal Berakhir:</label>
 									<div class="col-xs-3">          
-										<input type="text" id="tglAkhir" class="form-control" />
+										<input type="text" id="tglAkhir" class="form-control" required=true />
 									</div>
 								</div>
 								<div class="form-group">
@@ -199,13 +199,30 @@
 									</div>
 								</div>
 								<div class="form-group">
+									<label class="control-label col-sm-2" for="Kantor">Nama Acara:</label>
+									<div class="col-sm-5">          
+									<input type="text" class="form-control" id="namaacara" placeholder="Nama Acara" required=true>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label col-sm-2" for="Kantor">Jenis Acara:</label>
+									<div class="col-sm-5">          
+									<input type="text" class="form-control" id="jenisacara" placeholder="Jenis Acara" required=true>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label col-sm-2" for="Kantor">Keterangan Acara:</label>
+									<div class="col-sm-5">          
+									<input type="text" class="form-control" id="keteranganacara" placeholder="Keterangan Acara" required=true>
+									</div>
+								</div>
+								<div class="form-group">
 									<label class="control-label col-sm-2" for="Provinsi">Provinsi:</label>
 									<div class="col-xs-2">          
 										<select class="form-control" id="provinsi">
-											<option>Surabaya</option>
-											<option>Jakarta</option>
-											<option>Malang</option>
-											<option>Jember</option>
+											<option>Jawa Timur</option>
+											<option>Jawa Barat</option>
+											<option>Jawa tengah</option>
 										</select>
 									</div>
 									<label class="control-label col-sm-1" for="Kota">Kota:</label>
@@ -223,25 +240,28 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="control-label col-sm-2" for="Event">Paket Event:</label>
+									<label class="control-label col-sm-2" for="Event">Nama Paket Event:</label>
 									<div class="col-xs-2">          
-										<select class="form-control" id="Event">
-											<option>Paket 1</option>
-											<option>Paket 2</option>
-											<option>Paket 3</option>
-											<option>Paket Custom</option>
-										</select>
+										<input type="text" class="form-control" id="paketSelected" value="" required=true/>
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="control-label col-sm-2">Paket Vendor:</label>
 									<div class="col-xs-2"> 
-										<button type="submit" id="openvendor" class="btn btn-default" value="getnow">Get Now</button>
+										<input type="button" value="Get Now"  id="openvendor" class="btn btn-default">
 									</div>
 								</div>
 								<div class="form-group">        
 									<div class="col-sm-offset-5 col-sm-3">
-									<button type="submit" class="btn btn-default">Submit</button>
+									
+									<input type="hidden" value="" id="NamaAcara" name="NamaAcara"/>
+									<input type="hidden" value="" id="NamaPaket" name="NamaPaket"/>
+									<input type="hidden" value="" id="NamaVendor" name="NamaVendor"/>
+									<input type="hidden" value="" id="start_date" name="start_date"/>
+									<input type="hidden" value="" id="end_date" name="end_date"/>
+									<input type="hidden" value="" id="MenuMakanan" name="MenuMakanan"/>
+									<button type="submit" id="submitForm" class="btn btn-default">Submit</button>
+									
 									</div>
 								</div>
 							</form>
@@ -327,6 +347,29 @@
 		<script>
 		$("document").ready(function()
 		{
+			var tempVendor="";
+			$("#submitModal").click(function()
+			{
+				tempVendor = "";
+				$("#chkmod:checked").each(function()
+				{
+					tempVendor = tempVendor + $(this).val()+",";
+				})
+				$("#NamaVendor").val(tempVendor);
+				tempVendor="";
+				$("#chkmodFNB:checked").each(function()
+				{
+					tempVendor = tempVendor + $(this).val()+",";
+				})
+				$("#MenuMakanan").val(tempVendor);
+			})
+			$("#submitForm").click(function()
+			{
+				$("#start_date").val($("#tglMulai").val())
+				$("#end_date").val($("#tglAkhir").val())
+				$("#NamaAcara").val($("#namaacara").val())
+				$("#NamaPaket").val($("#paketSelected").val())
+			})
 			$("#Event").change(function()
 			{
 				/*alert($(this).val());
@@ -407,37 +450,42 @@
 						<form class="form-horizontal" role="form">
 							<div class="form-group">
 								<label class="control-label col-sm-3" for="entertainment">Entertainment:</label>
-								<div class="col-sm-5">          
-								<input type="checkbox" name="entera" value="entera"> EnterA<br>
-								<input type="checkbox" name="enterb" value="enterb"> EnterB<br>
+								<div class="col-sm-5">  
+								<?php foreach($ENT as $row){?>								
+								<input id="chkmod" type="checkbox" name="entera" value="<?php echo $row->IDVENDORACARA?>""><?php echo $row->NAMAVENDORACARA?><br>
+								<?php }?>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="control-label col-sm-3" for="decoration">Decoration:</label>
 								<div class="col-sm-5">          
-								<input type="checkbox" name="decora" value="decora"> DecorA<br>
-								<input type="checkbox" name="decorb" value="decorb"> DecorB<br>
+								<?php foreach($DECOR as $row){?>
+								<input id="chkmod" type="checkbox" name="decora" value="<?php echo $row->IDVENDORACARA?>""><?php echo $row->NAMAVENDORACARA?><br>
+								<?php }?>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="control-label col-sm-3" for="fandb">Food And Beverage:</label>
-								<div class="col-sm-5">          
-								<input type="checkbox" name="restoa" value="restoa"> RestoA<br>
-								<input type="checkbox" name="restob" value="restob"> RestoB<br>
+								<div class="col-sm-5">         
+								<?php foreach($FNB as $row){?>								
+								<input id="chkmodFNB" type="checkbox" name="restoa" value="<?php echo $row->IDVENDORACARA?>""><?php echo $row->NAMAVENDORACARA?><br>
+								<?php }?>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="control-label col-sm-3" for="mc">MC:</label>
 								<div class="col-sm-5">          
-								<input type="checkbox" name="mca" value="mca"> MCA<br>
-								<input type="checkbox" name="mcb" value="mcb"> MCB<br>
+								<?php foreach($MC as $row){?>
+								<input id="chkmod" type="checkbox" name="mca" value="<?php echo $row->IDVENDORACARA?>""> <?php echo $row->NAMAVENDORACARA?><br>
+								<?php }?>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="control-label col-sm-3" for="eo">Event Organizer:</label>
-								<div class="col-sm-5">          
-								<input type="checkbox" name="eoa" value="eoa"> Event OrganizerA<br>
-								<input type="checkbox" name="eob" value="eob"> Event OrganizerB<br>
+								<div class="col-sm-5">
+								<?php foreach($EO as $row){?>
+								<input id="chkmod" type="checkbox" name="eoa" value="<?php echo $row->IDVENDORACARA?>"> <?php echo $row->NAMAVENDORACARA?><br>
+								<?php }?>
 								</div>
 							</div>
 							<div class="form-group">
@@ -448,7 +496,7 @@
 							</div>
 							<div class="form-group">        
 								<div class="col-sm-offset-3 col-sm-5">
-								<button type="submit" class="btn btn-default">Submit</button>
+								<input type="button" id="submitModal" value="Submit" class="btn btn-default"></input>
 								</div>
 							</div>
 						</form>

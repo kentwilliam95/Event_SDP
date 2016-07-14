@@ -155,11 +155,11 @@
 							<div class="form-group col-sm-3">
 								<label for="sel1">Jenis Event</label>
 								<select class="form-control" name="jenisVendor" id="sel1">
-									<option value="Entertainment">Entertainment</option>
-									<option value="Decoration">Decoration</option>
-									<option value="Food&B">Food and Beverage</option>
+									<option value="Entertainm">Entertainment</option>
+									<option value="Decor">Decoration</option>
+									<option value="FNB">Food and Beverage</option>
 									<option value="MC">Mc</option>
-									<option value="EventOrganizer">Event Organizer</option>
+									<option value="EO">Event Organizer</option>
 								</select>
 							</div>
 							<div class="form-group col-sm-9">				
